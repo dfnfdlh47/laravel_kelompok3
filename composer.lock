@@ -56,7 +56,11 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/brick/math/tree/0.14.6"
+=======
+                "source": "https://github.com/brick/math/tree/0.14.5"
+>>>>>>> 78ee0fcd31ddab426d4bfa05e37068a2c1c380a6
             },
             "funding": [
                 {
@@ -64,7 +68,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2026-02-05T07:59:58+00:00"
+=======
+            "time": "2026-02-03T18:06:51+00:00"
+>>>>>>> 78ee0fcd31ddab426d4bfa05e37068a2c1c380a6
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
