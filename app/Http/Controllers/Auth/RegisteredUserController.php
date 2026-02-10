@@ -47,9 +47,11 @@ class RegisteredUserController extends Controller
         'role' => 'pengguna',
     ]);
 
-    Auth::login($user);
+   Auth::login($user);
 
-    return redirect()->route('dashboard');
+return redirect()->route('home');
+
+
 
 }
 

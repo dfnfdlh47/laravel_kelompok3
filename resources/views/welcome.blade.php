@@ -129,23 +129,21 @@
 
 <section class="hero">
     <nav>
-        <h1>Risky Futsal</h1>
         <ul>
-            <li><a href="{{ route('home') }}">Home</a></li>
-            <li><a href="#">Prosedur</a></li>
-            <li><a href="#">Jam Buka</a></li>
-            <li><a href="#">Lapangan</a></li>
-            <li><a href="#">Location</a></li>
+           
         </ul>
     </nav>
 
     <div class="content">
-        <h2>PENYEWAAN LAPANGAN<br><span>FUTSAL</span></h2>
+        <h2><span>Rizky Futsal</span></h2>
+        <h1>PENYEWAAN LAPANGAN FUTSAL</h1>
         <p>Klik login untuk menyewa lapangan futsal secara online</p>
 
         <div class="buttons">
-            <a href="{{ route('login') }}">LOGIN</a>
-            <a href="{{ route('register') }}" class="register">REGISTER</a>
+            <a href="{{ route('login') }}" class="btn btn-outline-light">LOGIN</a>
+
+            <a href="{{ route('register') }}" class="btn btn-outline-light">REGISTER</a>
+
         </div>
     </div>
 </section>
