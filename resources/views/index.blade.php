@@ -226,14 +226,39 @@
 <!-- ================= NAVBAR ================= -->
 <nav>
     <h1>RIZKY FUTSAL</h1>
+
     <div class="menu">
-        <a href="#">Home</a>
-        <a href="#">Prosedur</a>
-        <a href="#">Jam Buka</a>
-        <a href="#">Lapangan</a>
-        <a href="#">Location</a>
+        @auth
+            <!-- USER SUDAH LOGIN -->
+            <a href="{{ route('home') }}">Home</a>
+            <a href="#">Jam Buka</a>
+            <a href="#">Lapangan</a>
+            <a href="#">Location</a>
+
+            <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                @csrf
+                <button type="submit" style="
+                    background:none;
+                    border:none;
+                    color:white;
+                    margin-left:28px;
+                    font-size:14px;
+                    font-weight:500;
+                    cursor:pointer;
+                ">
+                    Logout
+                </button>
+            </form>
+        @endauth
+
+        @guest
+            <!-- BELUM LOGIN -->
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Register</a>
+        @endguest
     </div>
 </nav>
+
 
 <!-- ================= HERO ================= -->
 <div class="hero">

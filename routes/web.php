@@ -1,24 +1,54 @@
 <?php
 
+use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| GUEST (BELUM LOGIN)
+|--------------------------------------------------------------------------
+*/
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
+require __DIR__.'/auth.php';
 
-Route::get('index', function () {
-    return view('index');
-})->name('home');
+/*
+|--------------------------------------------------------------------------
+| USER LOGIN
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth'])->group(function () {
 
-Route::middleware('auth')->group(function () {
+    Route::get('/home', function () {
+        return view('index');
+    })->name('home');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+/*
+|--------------------------------------------------------------------------
+| ADMIN
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])
+        ->name('admin.dashboard');
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+Route::get('/dashboard', fn () => view('admin.dashboard'));
+Route::resource('booking', BookingController::class);
+});
+
