@@ -1,29 +1,94 @@
 @extends('admin.layout')
 
+@section('title', 'Data Booking')
 
 @section('content')
-<h2 class="text-2xl font-bold mb-4">Data Booking</h2>
-<a href="{{ route('admin.booking.create') }}" class="bg-red-600 text-white px-4 py-2 rounded">Tambah</a>
 
+<!-- JUDUL + BUTTON -->
+<div class="flex justify-between items-center mb-6">
+    <h2 class="text-xl font-bold text-gray-700">Data Booking Futsal</h2>
+</div>
 
-<table class="w-full mt-4 bg-white text-black">
-    <tr class="bg-black text-white">
-        <th>Nama</th><th>Tanggal</th><th>Jam</th><th>Status</th><th>Aksi</th>
-    </tr>
-@foreach($bookings as $b)
-    <tr>
-        <td>{{ $b->nama_pemesan }}</td>
-        <td>{{ $b->tanggal }}</td>
-        <td>{{ $b->jam_mulai }} - {{ $b->jam_selesai }}</td>
-        <td>{{ $b->status }}</td>
-        <td class="flex gap-2">
-        <a href="{{ route('admin.booking.edit',$b->id) }}">Edit</a>
-            <form method="POST" action="{{ route('admin.booking.destroy',$b->id) }}">
-             @csrf @method('DELETE')
-            <button>Hapus</button>
-             </form>
-        </td>
-        </tr>
-@endforeach
-</table>
+<!-- TABEL BOOKING -->
+<div class="bg-white rounded shadow overflow-x-auto">
+    <table class="w-full text-sm">
+        <thead class="bg-red-700 text-white">
+            <tr>
+                <th class="p-3">No</th>
+                <th class="p-3">Nama Pemesan</th>
+                <th class="p-3">Lapangan</th>
+                <th class="p-3">Tanggal</th>
+                <th class="p-3">Jam</th>
+                <th class="p-3">Durasi</th>
+                <th class="p-3">Pembayaran</th>
+                <th class="p-3">Status</th>
+                <th class="p-3">Aksi</th>
+            </tr>
+        </thead>
+
+        <tbody class="text-gray-700">
+
+            <tr class="border-b hover:bg-gray-100">
+                <td class="p-3 text-center">1</td>
+                <td class="p-3">Fauzi</td>
+                <td class="p-3">Lapangan A</td>
+                <td class="p-3">2026-02-12</td>
+                <td class="p-3">19.00</td>
+                <td class="p-3">2 Jam</td>
+                <td class="p-3">QRIS</td>
+                <td class="p-3">
+                    <span class="px-2 py-1 bg-yellow-500 text-white rounded text-xs">
+                        Pending
+                    </span>
+                </td>
+                <td class="p-3 space-x-1">
+                    <button class="bg-green-600 text-white px-2 py-1 rounded text-xs">
+                        Konfirmasi
+                    </button>
+                    <button class="bg-red-600 text-white px-2 py-1 rounded text-xs">
+                        Batal
+                    </button>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-100">
+                <td class="p-3 text-center">2</td>
+                <td class="p-3">Bayu</td>
+                <td class="p-3">Lapangan B</td>
+                <td class="p-3">2026-02-12</td>
+                <td class="p-3">20.00</td>
+                <td class="p-3">1 Jam</td>
+                <td class="p-3">Cash</td>
+                <td class="p-3">
+                    <span class="px-2 py-1 bg-green-600 text-white rounded text-xs">
+                        Selesai
+                    </span>
+                </td>
+                <td class="p-3">
+                    <span class="text-gray-400 text-xs">-</span>
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-100">
+                <td class="p-3 text-center">3</td>
+                <td class="p-3">Dimas</td>
+                <td class="p-3">Lapangan A</td>
+                <td class="p-3">2026-02-13</td>
+                <td class="p-3">18.00</td>
+                <td class="p-3">2 Jam</td>
+                <td class="p-3">Transfer</td>
+                <td class="p-3">
+                    <span class="px-2 py-1 bg-red-600 text-white rounded text-xs">
+                        Dibatalkan
+                    </span>
+                </td>
+                <td class="p-3">
+                    <span class="text-gray-400 text-xs">-</span>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
 @endsection
