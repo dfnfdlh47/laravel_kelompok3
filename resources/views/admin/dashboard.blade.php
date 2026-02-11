@@ -1,5 +1,6 @@
 @extends('admin.layout')
 
+@section('title', 'Dashboard')
 
 @section('content')
 <h2 class="text-3xl font-bold mb-6">Dashboard</h2>
@@ -9,6 +10,7 @@
     <div class="bg-red-600 text-white p-6 rounded-xl shadow">
         <h3>Total Booking</h3>
         <p class="text-4xl">{{ \App\Models\Booking::count() }}</p>
-    </div>x
+    </div>
 </div>
+
 @endsection
