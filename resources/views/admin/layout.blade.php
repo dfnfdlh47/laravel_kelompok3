@@ -10,7 +10,7 @@
     <aside class="w-64 bg-red-700 p-6">
         <h1 class="text-2xl font-bold">FUTSAL ADMIN</h1>
              <nav class="mt-6 space-y-2">
-                <a href="/admin/dashboard" class="block">Dashboard</a>
+                <a href="/admin/dashboard" class="block">m     Dashboard</a>
                 <a href="/admin/booking" class="block">Booking</a>
             </nav>
         </aside>
