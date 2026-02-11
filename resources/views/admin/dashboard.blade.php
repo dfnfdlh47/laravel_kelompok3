@@ -85,6 +85,22 @@
             </td>
         </tr>
     </tbody>
+
+            <tbody>
+        <tr class="border-b hover:bg-gray-100">
+            <td class="px-4 py-3 text-center">1</td>
+            <td class="px-4 py-3">Cecep</td>
+            <td class="px-4 py-3">Lapangan A</td>
+            <td class="px-4 py-3 text-center">2026-02-11</td>
+            <td class="px-4 py-3 text-center">21.00</td>
+            <td class="px-4 py-3 text-center">3 Jam</td>
+            <td class="px-4 py-3 text-center">
+                <span class="inline-block px-3 py-1 bg-green-600 text-white rounded-full text-xs">
+                    Selesai
+                </span>
+            </td>
+        </tr>
+    </tbody>
 </table>
     </div>
 </div>
