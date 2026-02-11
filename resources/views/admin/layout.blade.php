@@ -9,13 +9,53 @@
 <body class="bg-gray-200">
 
 <div class="flex min-h-screen">
-    <aside class="w-64 bg-red-700 p-6">
-        <h1 class="text-2xl font-bold">FUTSAL ADMIN</h1>
-             <nav class="mt-6 space-y-2">
-                <a href="/admin/dashboard" class="block">Dashboard</a>
-                <a href="/admin/booking" class="block">Booking</a>
-            </nav>
-        </aside>
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-gray-800 text-white flex flex-col">
+
+        <!-- PROFIL / LOGO -->
+        <div class="p-6 text-center border-b border-red-700">
+            <div class="w-24 h-24 rounded-full bg-red-700 mx-auto mb-3 flex items-center justify-center text-3xl font-bold shadow">
+                RF
+            </div>
+            <h2 class="font-bold text-lg tracking-wide">RIZKI FUTSAL</h2>
+            <p class="text-sm text-gray-300">Admin Panel</p>
+        </div>
+
+        <!-- MENU -->
+        <nav class="flex-1 mt-4">
+            <a href="/admin/dashboard"
+               class="block px-6 py-3 hover:bg-red-700 transition">
+               📊 Dashboard
+            </a>
+
+            <a href="/admin/lapangan"
+               class="block px-6 py-3 hover:bg-red-700 transition">
+               ⚽ Data Lapangan
+            </a>
+
+            <a href="/admin/booking"
+               class="block px-6 py-3 hover:bg-red-700 transition">
+               📅 Booking
+            </a>
+
+            <a href="/admin/jadwal"
+               class="block px-6 py-3 hover:bg-red-700 transition">
+               ⏰ Jadwal
+            </a>
+
+            <a href="/admin/user"
+               class="block px-6 py-3 hover:bg-red-700 transition">
+               👥 User
+            </a>
+
+            <a href="/admin/laporan"
+               class="block px-6 py-3 hover:bg-red-700 transition">
+               💰 Laporan
+            </a>
+        </nav>
+
+    </aside>
 
     <!-- MAIN -->
     <div class="flex-1 flex flex-col">
