@@ -3,8 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<h2 class="text-3xl font-bold mb-6">Dashboard</h2>
 
+<!-- CARD STATISTIK -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
 
     <div class="bg-red-600 text-white p-5 rounded shadow">
         <div class="text-sm">Booking Hari Ini</div>
@@ -104,4 +105,4 @@
     </div>
 </div>
 
-@endsection
+@endsection 
