@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Risky Futsal</title>
+    <title>Rizky Futsal - Welcome</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -14,13 +14,19 @@
             box-sizing: border-box;
         }
 
-        body {
+        /* Mengunci layar agar tidak bisa di-scroll */
+        body, html {
             font-family: 'Poppins', sans-serif;
+            height: 100%;
+            overflow: hidden; 
         }
 
         .hero {
-            min-height: 100vh;
-            background:
+            height: 100vh; /* Menggunakan height fix, bukan min-height */
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            background: 
                 linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
                 url('https://images.unsplash.com/photo-1518091043644-c1d4457512c6') center/cover no-repeat;
             color: white;
@@ -31,6 +37,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 25px 80px;
+            width: 100%;
         }
 
         nav h1 {
@@ -60,7 +67,7 @@
         }
 
         .content {
-            height: calc(100vh - 100px);
+            flex: 1; /* Membuat konten mengisi sisa ruang secara otomatis tanpa over-scroll */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -79,6 +86,13 @@
         .content h2 span {
             color: #ef4444;
         }
+        
+        /* Tambahan sedikit style untuk judul H1 agar lebih rapi */
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
 
         .content p {
             font-size: 14px;
@@ -90,12 +104,14 @@
             background: transparent;
             border: 1px solid #dc2626;
             color: white;
+            text-decoration: none; /* Menghilangkan garis bawah bawaan link */
             padding: 12px 28px;
             margin: 0 10px;
             font-size: 13px;
             font-weight: 600;
             border-radius: 8px;
             transition: 0.3s;
+            display: inline-block; /* Memastikan tombol merender padding dengan benar */
         }
 
         .buttons a.register {
@@ -119,9 +135,14 @@
             .content h2 {
                 font-size: 32px;
             }
+            
+            .content h1 {
+                font-size: 24px;
+            }
         }
+        
         .logo img {
-                height: 38px;
+            height: 38px;
         }
     </style>
 </head>
@@ -129,9 +150,9 @@
 
 <section class="hero">
     <nav>
+        <h1>RIZKY FUTSAL</h1>
         <ul>
-           
-        </ul>
+            </ul>
     </nav>
 
     <div class="content">
@@ -141,9 +162,7 @@
 
         <div class="buttons">
             <a href="{{ route('login') }}" class="btn btn-outline-light">LOGIN</a>
-
-            <a href="{{ route('register') }}" class="btn btn-outline-light">REGISTER</a>
-
+            <a href="{{ route('register') }}" class="register">REGISTER</a>
         </div>
     </div>
 </section>
