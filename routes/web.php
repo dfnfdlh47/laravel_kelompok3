@@ -16,6 +16,15 @@ Route::get('/', function () {
 
 /*
 |--------------------------------------------------------------------------
+| BOOKING USER (TAMBAHAN 🔥)
+|--------------------------------------------------------------------------
+*/
+Route::get('/booking', function () {
+    return view('booking.index');
+})->name('booking.index');
+
+/*
+|--------------------------------------------------------------------------
 | AUTH
 |--------------------------------------------------------------------------
 */
@@ -45,10 +54,9 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])
         ->name('admin.dashboard');
-});
 
-Route::prefix('admin')->name('admin.')->group(function () {
-Route::get('/dashboard', fn () => view('admin.dashboard'));
-Route::resource('booking', BookingController::class);
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', fn () => view('admin.dashboard'));
+        Route::resource('booking', BookingController::class);
+    });
 });
-

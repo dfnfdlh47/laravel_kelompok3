@@ -160,10 +160,12 @@
 
         /* ================= FEATURES ================= */
         .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 40px;
+          justify-items: center;
         }
+
 
         .feature-box {
             border: 1px solid var(--gold);
@@ -231,9 +233,10 @@
         @auth
             <!-- USER SUDAH LOGIN -->
             <a href="{{ route('home') }}">Home</a>
-            <a href="#">Jam Buka</a>
             <a href="#">Lapangan</a>
+            <a href="#">Booking</a>
             <a href="#">Location</a>
+
 
             <form method="POST" action="{{ route('logout') }}" style="display:inline;">
                 @csrf
@@ -296,6 +299,58 @@
         </div>
     </div>
 </section>
+
+
+<!-- ================= FASILITAS ================= -->
+<section>
+    <div class="section-title">
+        <h3>Fasilitas Rizky Futsal</h3>
+        <p>Kenyamanan lengkap untuk pemain dan penonton</p>
+    </div>
+
+    <div class="features">
+        <div class="feature-box">
+            <h4>🍔 Kantin</h4>
+            <p>
+                Tersedia kantin dengan berbagai makanan dan minuman
+                untuk mengisi energi sebelum dan sesudah bermain.
+            </p>
+        </div>
+
+        <div class="feature-box">
+            <h4>🕌 Mushola</h4>
+            <p>
+                Mushola bersih dan nyaman untuk beribadah
+                selama berada di area Rizky Futsal.
+            </p>
+        </div>
+
+        <div class="feature-box">
+            <h4>🚿 Kamar Mandi</h4>
+            <p>
+                Kamar mandi dan ruang ganti yang bersih,
+                terawat, dan nyaman digunakan.
+            </p>
+        </div>
+
+        <div class="feature-box">
+            <h4>🅿️ Parkiran Luas</h4>
+            <p>
+                Area parkir luas dan aman
+                untuk motor maupun mobil.
+            </p>
+        </div>
+
+        <div class="feature-box">
+            <h4>🪑 Tempat Duduk Nyaman</h4>
+            <p>
+                Area tempat duduk yang nyaman
+                bagi penonton dan pemain yang menunggu giliran.
+            </p>
+        </div>
+    </div>
+</section>
+
 
 <!-- ================= FOOTER ================= -->
 <footer>
