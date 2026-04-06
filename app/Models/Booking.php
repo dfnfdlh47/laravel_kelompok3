@@ -12,6 +12,7 @@ class Booking extends Model
     // Daftar semua kolom yang diizinkan untuk diisi data (Mass Assignment)
     protected $fillable = [
         'user_id',
+        'lapangan_id',
         'nama_pemesan',
         'no_hp',
         'tanggal',
