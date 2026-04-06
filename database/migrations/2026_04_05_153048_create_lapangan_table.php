@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.g
      */
     public function up(): void
     {
-        Schema::create('lapangans', function (Blueprint $table) {
+        Schema::create('lapangan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lapangan'); // Contoh: "Lapangan Futsal A", "Vinyl 1"
             $table->string('jenis_lapangan')->nullable(); // Contoh: "Futsal", "Badminton"
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lapangans');
+        Schema::dropIfExists('lapangan');
     }
 };
