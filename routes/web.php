@@ -54,7 +54,7 @@ Route::middleware(['auth'])->group(function () {
     // -------------------------
 
     // --- RUTE BOOKING USER (Sistem Pemesanan, Pembayaran, dan Invoice) ---
-    Route::get('/booking', [UserBookingController::class, 'index'])->name('booking');
+    Route::get('/booking', [UserBookingController::class, 'index'])->name('booking.index');
     Route::post('/booking', [UserBookingController::class, 'store'])->name('booking.store');
     Route::get('/payment/{id}', [UserBookingController::class, 'payment'])->name('payment');
     Route::post('/payment/{id}', [UserBookingController::class, 'pay'])->name('payment.pay');
