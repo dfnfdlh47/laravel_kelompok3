@@ -8,11 +8,9 @@ use App\Models\Lapangan;
 
 class LapanganController extends Controller
 {
-    public function index()
-    {
-      
-        $data_lapangan = Lapangan::all(); 
-
-        return view('lapangan', compact('data_lapangan'));
-    }
+public function index()
+{
+    $lapangans = Lapangan::all(); // Mengambil semua data
+    return view('lapangan', compact('lapangans')); // Dikirim sebagai $lapangans
+}
 }
