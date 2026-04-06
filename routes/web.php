@@ -67,6 +67,10 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/booking', function () {
+    return view('booking');
+})->name('booking');
+
 
 /*
 |--------------------------------------------------------------------------

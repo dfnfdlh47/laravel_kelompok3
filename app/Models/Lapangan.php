@@ -9,8 +9,6 @@ class Lapangan extends Model
 {
     use HasFactory;
 
-    protected $table = 'lapangan';
-
     // Daftarkan nama kolom yang boleh diisi dari form
     protected $fillable = [
         'nama_lapangan',
