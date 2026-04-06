@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Models\Lapangan;
 
 class BookingController extends Controller
 {
@@ -20,19 +21,36 @@ class BookingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('admin.booking.create');
+ public function create(Request $request)
+{
+    if (!$request->lapangan_id) {
+        abort(404);
     }
+
+    $lapangan = Lapangan::findOrFail($request->lapangan_id);
+
+    return view('booking', compact('lapangan'));
+}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        Booking::create($request->all());
-        return redirect()->route('admin.booking.index');
-    }
+    Booking::create([
+        'user_id' => Auth::id(),
+        'lapangan_id' => $request->lapangan_id,
+        'nama_pemesan' => Auth::user()->name, // 🔥 otomatis dari login
+        'no_hp' => $request->no_hp,
+        'tanggal' => $request->tanggal,
+        'jam_mulai' => $request->jam_mulai,
+        'durasi' => $request->durasi,
+        'total_harga' => $request->total_harga,
+        'status' => 'pending',
+    ]);
+
+    return redirect()->route('admin.booking.index');
+}
 
     /**
      * Display the specified resource.

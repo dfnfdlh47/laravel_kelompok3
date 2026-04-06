@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* ================= NAVBAR ================= */
+        /* ================= NAVBAR (DISAMAKAN) ================= */
         nav {
             position: fixed;
             top: 0;
@@ -49,11 +49,6 @@
             letter-spacing: 1px;
         }
 
-        nav .menu {
-            display: flex;
-            align-items: center;
-        }
-
         nav .menu a {
             color: var(--white);
             text-decoration: none;
@@ -65,15 +60,15 @@
 
         nav .menu a:hover { color: var(--gold); }
 
-        /* ================= HERO / MAIN CONTENT ================= */
+        /* ================= HERO SECTION (BG DISAMAKAN) ================= */
         .hero-location {
             height: 100vh;
             padding: 0 80px;
             display: flex;
             align-items: center;
-            background:
-                linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000') 
+            background: 
+                linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                url('https://images.unsplash.com/photo-1518091043644-c1d4457512c6') 
                 center / cover no-repeat;
         }
 
@@ -98,7 +93,7 @@
             letter-spacing: 1px;
         }
 
-        /* ================= WRAPPER INFO & MAP ================= */
+        /* ================= INFO & MAP WRAPPER ================= */
         .loc-wrapper {
             display: flex;
             gap: 50px;
@@ -107,13 +102,8 @@
             align-items: flex-start;
         }
 
-        .loc-info {
-            flex: 1;
-        }
-
-        .loc-map {
-            flex: 1.5;
-        }
+        .loc-info { flex: 1; }
+        .loc-map { flex: 1.5; }
 
         .loc-info h3, .loc-map h3 {
             color: var(--gold);
@@ -131,7 +121,6 @@
             color: var(--white);
         }
 
-        /* Tombol Maps Style Rizky Futsal */
         .btn-maps {
             display: inline-block;
             padding: 14px 35px;
@@ -149,19 +138,16 @@
             box-shadow: 0 0 20px rgba(225, 6, 0, 0.4);
         }
 
-        /* Map Frame Style */
         .map-frame {
             width: 100%;
             height: 300px;
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 4px;
-            filter: grayscale(0.5) contrast(1.1) invert(0.9); /* Efek gelap */
+            filter: grayscale(0.5) contrast(1.1) invert(0.9);
             transition: 0.5s;
         }
 
-        .map-frame:hover {
-            filter: grayscale(0) invert(0);
-        }
+        .map-frame:hover { filter: grayscale(0) invert(0); }
 
         /* ================= FOOTER ================= */
         footer {
@@ -176,7 +162,7 @@
         @media (max-width: 992px) {
             nav { padding: 20px 30px; }
             .hero-location { padding: 0 30px; }
-            .loc-wrapper { flex-direction: column; }
+            .loc-wrapper { flex-direction: column; gap: 40px; }
             .hero-location h2 { font-size: 35px; }
         }
     </style>
@@ -187,7 +173,7 @@
     <h1>RIZKY FUTSAL</h1>
     <div class="menu">
         @auth
-            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ url('home') }}">Home</a>
             <a href="{{ route('jambuka') }}">Jam Buka</a>
             <a href="{{ route('lapangan.index') }}">Lapangan</a>
             <a href="{{ route('location') }}">Location</a>
@@ -212,19 +198,19 @@
                     Pekalipan, Kota Cirebon,<br>
                     Jawa Barat
                 </p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Rizky+Futsal+Jl.+Pangeran+Drajat+No.38+Cirebon" target="_blank" class="btn-maps">
-                        📍 Buka Google Maps 
-                    </a>
+                <a href="https://maps.google.com" target="_blank" class="btn-maps">
+                    📍 Buka di Google Maps
+                </a>
             </div>
 
             <div class="loc-map">
                 <h3>Google Maps Preview</h3>
-            <iframe 
-                class="map-frame"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.3456789!2d108.56789!3d-6.712345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ee26000000001%3A0x0!2sJl.%20Pangeran%20Drajat%20No.38%2C%20Jagasatru%2C%20Kec.%20Pekalipan%2C%20Kota%20Cirebon!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
+                <iframe 
+                    class="map-frame"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.3385289547!2d108.5583569!3d-6.728211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2bee2117559e846b%3A0xb35f29d27f677b1e!2sJl.%20Pangeran%20Drajat%20No.38%2C%20Jagasatru%2C%20Kec.%20Pekalipan%2C%20Kota%20Cirebon%2C%20Jawa%20Barat%2045115!5e0!3m2!1sid!2sid!4v1710000000000" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
             </div>
         </div>
     </div>
@@ -236,5 +222,3 @@
 
 </body>
 </html>
-
-

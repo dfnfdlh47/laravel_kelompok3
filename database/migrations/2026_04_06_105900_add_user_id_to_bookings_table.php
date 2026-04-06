@@ -9,12 +9,10 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
-{
+    public function up(): void
+    {
     Schema::table('bookings', function (Blueprint $table) {
-        if (!Schema::hasColumn('bookings', 'lapangan_id')) {
-            $table->unsignedBigInteger('lapangan_id');
-        }
+        $table->foreignId('user_id')->constrained()->onDelete('cascade');
     });
 }
 
@@ -24,8 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-        $table->dropForeign(['lapangan_id']);
-        $table->dropColumn('lapangan_id');
+            //
         });
     }
 };
