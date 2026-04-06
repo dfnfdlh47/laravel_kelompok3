@@ -231,9 +231,9 @@
         @auth
             <!-- USER SUDAH LOGIN -->
             <a href="{{ route('home') }}">Home</a>
-            <a href="#">Jam Buka</a>
-            <a href="#">Lapangan</a>
-            <a href="#">Location</a>
+            <a href="{{ route('jambuka') }}">Jam Buka</a>
+            <a href="{{ route('lapangan.index') }}">Lapangan</a>
+            <a href="{{ route('location') }}">Location</a>
 
             <form method="POST" action="{{ route('logout') }}" style="display:inline;">
                 @csrf
@@ -261,7 +261,7 @@
 
 
 <!-- ================= HERO ================= -->
-<div class="hero">
+<div class="hero">          
     <div class="hero-content">
         <h2>PENYEWAAN LAPANGAN <span>FUTSAL</span></h2>
         <p>

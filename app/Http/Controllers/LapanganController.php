@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 
 class LapanganController extends Controller
 {
@@ -62,3 +63,17 @@ class LapanganController extends Controller
         //
     }
 }
+=======
+use App\Models\Lapangan;
+
+class LapanganController extends Controller
+{
+    public function index()
+    {
+      
+        $data_lapangan = Lapangan::all(); 
+
+        return view('lapangan', compact('data_lapangan'));
+    }
+}
+>>>>>>> ff7f9356a078661112c9e5b3792b192e17c5b0e6
