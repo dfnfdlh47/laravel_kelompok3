@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LapanganController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,4 +52,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::get('/dashboard', fn () => view('admin.dashboard'));
 Route::resource('booking', BookingController::class);
 });
+
+Route::resource('lapangan', LapanganController::class);
 
