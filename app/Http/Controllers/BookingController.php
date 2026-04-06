@@ -45,6 +45,7 @@ class BookingController extends Controller
 
         $booking = Booking::create([
             'user_id' => Auth::id(),
+            'lapangan_id' => 1,
             'tanggal' => $request->tanggal,
             'jam_mulai' => $request->jam_mulai,
             'durasi' => $request->durasi,
