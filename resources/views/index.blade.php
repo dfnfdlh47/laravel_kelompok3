@@ -111,7 +111,7 @@
     <div class="menu">
         @auth
             <a href="{{ route('home') }}">Home</a>
-            <a href="{{ route('jam-buka') }}">Jam Buka</a>
+            <a href="{{ route('jambuka') }}">Jam Buka</a>
             <a href="{{ route('lapangan.index') }}">Lapangan</a>
             <a href="{{ route('location') }}">Location</a>
 
