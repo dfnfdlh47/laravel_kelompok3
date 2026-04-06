@@ -101,10 +101,20 @@
 <body>
     <div class="container">
         <h2>Form Booking Lapangan</h2>
+
+        @if ($errors->any())
+    <div style="color:red; margin-bottom:20px;">
+        @foreach ($errors->all() as $error)
+            <div>{{ $error }}</div>
+        @endforeach
+    </div>
+@endif
         
         <form action="{{ route('booking.store') }}" method="POST">
             
             @csrf
+
+            <input type="hidden" name="lapangan_id" value="1">
             
             <div class="form-group">
                 <label>Nama Pemesan</label>

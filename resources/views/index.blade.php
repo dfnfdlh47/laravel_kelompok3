@@ -268,7 +268,7 @@
             Arena futsal premium dengan fasilitas terbaik, standar profesional,
             dan suasana eksklusif untuk pengalaman bermain terbaikmu.
         </p>
-        <a href="{{ route('booking') }}" class="btn">Booking Sekarang</a>
+        <a href="{{ route('booking.index') }}" class="btn">Booking Sekarang</a>
     </div>
 </div>
 

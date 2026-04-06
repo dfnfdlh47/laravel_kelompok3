@@ -18,10 +18,11 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tanggal' => 'required|date',
-            'jam_mulai' => 'required',
-            'durasi' => 'required|integer|min:1'
-        ]);
+    'lapangan_id' => 'required|exists:lapangans,id', // Pastikan ID-nya beneran ada di tabel lapangans
+    'tanggal' => 'required|date',
+    'jam_mulai' => 'required',
+    'durasi' => 'required|integer|min:1'
+]);
 
         $jamMulai = (int) substr($request->jam_mulai, 0, 2);
         $totalHarga = 0;
@@ -44,14 +45,14 @@ class BookingController extends Controller
         }
 
         $booking = Booking::create([
-            'user_id' => Auth::id(),
-            'lapangan_id' => 1,
-            'tanggal' => $request->tanggal,
-            'jam_mulai' => $request->jam_mulai,
-            'durasi' => $request->durasi,
-            'total_harga' => $totalHarga,
-            'status' => 'pending'
-        ]);
+    'user_id' => Auth::id(),
+    'lapangan_id' => $request->lapangan_id, // Ambil dari input user
+    'tanggal' => $request->tanggal,
+    'jam_mulai' => $request->jam_mulai,
+    'durasi' => $request->durasi,
+    'total_harga' => $totalHarga,
+    'status' => 'pending'
+]);
 
         return redirect()->route('payment', $booking->id);
     }
