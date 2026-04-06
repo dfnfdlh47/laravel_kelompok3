@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -232,11 +231,7 @@
         @auth
             <!-- USER SUDAH LOGIN -->
             <a href="{{ route('home') }}">Home</a>
-<<<<<<< HEAD
-            <a href="{{ route('jam-buka') }}">Jam Buka</a>
-=======
             <a href="{{ route('jambuka') }}">Jam Buka</a>
->>>>>>> ff7f9356a078661112c9e5b3792b192e17c5b0e6
             <a href="{{ route('lapangan.index') }}">Lapangan</a>
             <a href="{{ route('location') }}">Location</a>
 

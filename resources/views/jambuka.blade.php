@@ -192,7 +192,7 @@
     <h1>RIZKY FUTSAL</h1>
     <div class="menu">
         @auth
-            <a href="{{ url('/') }}">Home</a>
+            <a href="{{ url('home') }}">Home</a>
             <a href="{{ route('jambuka') }}">Jam Buka</a>
             <a href="{{ route('lapangan.index') }}">Lapangan</a>
             <a href="{{ route('location') }}">Location</a>
