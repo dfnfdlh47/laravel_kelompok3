@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('lapangans', function (Blueprint $table) {
-            $table->string('foto')->nullable()->after('jenis_lapangan');
+        Schema::table('bookings', function (Blueprint $table) {
+        $table->foreignId('lapangan_id')->constrained('lapangans')->onDelete('cascade');
         });
     }
 
@@ -21,8 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('lapangan', function (Blueprint $table) {
-            $table->dropColumn('foto');
+        Schema::table('bookings', function (Blueprint $table) {
+        $table->dropForeign(['lapangan_id']);
+        $table->dropColumn('lapangan_id');
         });
     }
 };

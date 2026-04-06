@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lapangan', function (Blueprint $table) {
+        Schema::create('lapangans', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lapangan'); // Contoh: "Lapangan Futsal A", "Vinyl 1"
             $table->string('jenis_lapangan')->nullable(); // Contoh: "Futsal", "Badminton"
