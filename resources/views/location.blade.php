@@ -213,7 +213,7 @@
                     Jawa Barat
                 </p>
                     <a href="https://www.google.com/maps/search/?api=1&query=Rizky+Futsal+Jl.+Pangeran+Drajat+No.38+Cirebon" target="_blank" class="btn-maps">
-                        📍 Buka di Google Maps
+                        📍 Buka Google Maps 
                     </a>
             </div>
 
