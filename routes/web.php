@@ -38,8 +38,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/lapangan', [LapanganController::class, 'index'])->name('lapangan.index');
     
     Route::get('/jam-buka', function () {
-        return view('jam_buka'); 
-    })->name('jam-buka');
+        return view('jambuka'); 
+    })->name('jambuka');
 
     Route::get('/location', function () {
         return view('location'); 
