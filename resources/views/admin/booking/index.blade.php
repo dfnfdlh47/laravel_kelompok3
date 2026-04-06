@@ -1,30 +1,13 @@
-@extends('admin.layout')
-
-@section('title', 'Data Booking')
-
 @section('content')
 
-<!-- JUDUL + BUTTON -->
-<div class="flex justify-between items-center mb-6">
-    <h2 class="text-xl font-bold text-gray-700">Data Booking Futsal</h2>
-</div>
+<style>
+    .fade-in {
+        animation: fadeIn 0.8s ease-in-out;
+    }
 
-<!-- TABEL BOOKING -->
-<div class="bg-white rounded shadow overflow-x-auto">
-    <table class="w-full text-sm border-collapse">
-    <thead class="bg-red-700 text-white">
-        <tr>
-            <th class="px-4 py-3 text-center">No</th>
-            <th class="px-4 py-3 text-left">Nama Pemesan</th>
-            <th class="px-4 py-3 text-left">Lapangan</th>
-            <th class="px-4 py-3 text-center">Tanggal</th>
-            <th class="px-4 py-3 text-center">Jam</th>
-            <th class="px-4 py-3 text-center">Durasi</th>
-            <th class="px-4 py-3 text-center">Pembayaran</th>
-            <th class="px-4 py-3 text-center">Status</th>
-            <th class="px-4 py-3 text-center">Aksi</th>
-        </tr>
-    </thead>
+    .slide-up {
+        animation: slideUp 0.7s ease-out;
+    }
 
     <tbody class="text-gray-700">
         <tr class="border-b hover:bg-gray-100">
