@@ -54,7 +54,9 @@ Route::middleware(['auth'])->group(function () {
     // -------------------------
 
     // --- RUTE BOOKING USER (Sistem Pemesanan, Pembayaran, dan Invoice) ---
+     
     Route::get('/booking', [UserBookingController::class, 'index'])->name('booking');
+Route::get('/booking/create/{lapangan_id}', [UserBookingController::class, 'create'])->name('booking.create');
     Route::post('/booking', [UserBookingController::class, 'store'])->name('booking.store');
     Route::get('/payment/{id}', [UserBookingController::class, 'payment'])->name('payment');
     Route::post('/payment/{id}', [UserBookingController::class, 'pay'])->name('payment.pay');
@@ -80,8 +82,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
 Route::get('/dashboard', fn () => view('admin.dashboard'));
-Route::resource('booking', BookingController::class);
+Route::resource('booking', AdminBookingController::class);
 });
+
 
 Route::resource('lapangan', LapanganController::class);
 

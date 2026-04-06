@@ -12,149 +12,57 @@
             --red: #e10600;
             --gold: #d4af37;
             --white: #ffffff;
-            --card-bg: rgba(17, 17, 17, 0.9); /* Card agak transparan biar keren */
+            --card-bg: rgba(17, 17, 17, 0.9);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--black); color: var(--white); overflow-x: hidden; }
 
-        body {
-            background-color: var(--black);
-            color: var(--white);
-            overflow-x: hidden;
-        }
-
-        /* ================= NAVBAR ================= */
         nav {
-            position: fixed;
-            top: 0; width: 100%;
+            position: fixed; top: 0; width: 100%;
             padding: 24px 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0));
-            backdrop-filter: blur(8px);
-            z-index: 100;
+            backdrop-filter: blur(8px); z-index: 100;
         }
 
         nav h1 { font-size: 22px; color: var(--red); font-weight: 700; }
-        nav .menu a {
-            color: var(--white);
-            text-decoration: none;
-            margin-left: 28px;
-            font-size: 14px;
-            transition: 0.3s;
-        }
+        nav .menu a { color: var(--white); text-decoration: none; margin-left: 28px; font-size: 14px; transition: 0.3s; }
         nav .menu a:hover { color: var(--gold); }
 
-        /* ================= HERO SECTION (BACKGROUND) ================= */
         .hero-bg {
             min-height: 100vh;
             padding: 120px 80px 80px 80px;
-            background: 
-                linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                url('https://images.unsplash.com/photo-1518091043644-c1d4457512c6') 
-                center / cover no-repeat fixed; /* fixed bikin gambar diem pas di-scroll */
-            display: flex;
-            flex-direction: column;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1518091043644-c1d4457512c6') center / cover no-repeat fixed;
+            display: flex; flex-direction: column;
         }
 
-        .page-header {
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding-bottom: 20px;
-        }
-
+        .page-header { margin-bottom: 40px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 20px; }
         .page-header h2 { font-size: 52px; text-transform: uppercase; font-weight: 700; }
         .page-header h2 span { color: var(--red); }
 
-        /* ================= GRID 2 KOLOM ================= */
-        .lapangan-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
+        .lapangan-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .lapangan-card { background-color: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; overflow: hidden; transition: 0.4s; backdrop-filter: blur(10px); }
+        .lapangan-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
 
-        .lapangan-card {
-            background-color: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: 0.4s;
-            backdrop-filter: blur(10px); /* Bikin efek kaca tipis */
-        }
+        .card-image { width: 100%; height: 250px; overflow: hidden; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; }
 
-        .lapangan-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-        }
+        .card-details { padding: 30px; }
+        .card-details h3 { font-size: 26px; margin-bottom: 20px; color: var(--white); }
 
-        .card-image {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card-details {
-            padding: 30px;
-        }
-
-        .card-details h3 {
-            font-size: 26px;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-
-        /* List Harga Styling */
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 14px;
-        }
-        
+        .price-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
         .price-item span { color: #bbb; }
         .price-item strong { color: var(--gold); }
 
         .btn-booking {
-            display: block;
-            width: 100%;
-            text-align: center;
-            margin-top: 25px;
-            padding: 14px 0;
-            border: 2px solid var(--red);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            transition: 0.3s;
-            border-radius: 8px;
+            display: block; width: 100%; text-align: center; margin-top: 25px; padding: 14px 0;
+            border: 2px solid var(--red); color: var(--white); text-decoration: none; font-weight: 700;
+            text-transform: uppercase; transition: 0.3s; border-radius: 8px;
         }
+        .btn-booking:hover { background-color: var(--red); box-shadow: 0 0 20px rgba(225, 6, 0, 0.5); }
 
-        .btn-booking:hover {
-            background-color: var(--red);
-            box-shadow: 0 0 20px rgba(225, 6, 0, 0.5);
-        }
-
-        footer {
-            padding: 40px 0;
-            text-align: center;
-            color: #555;
-            background-color: #000;
-            font-size: 12px;
-        }
+        footer { padding: 40px 0; text-align: center; color: #555; background-color: #000; font-size: 12px; }
 
         @media (max-width: 992px) {
             .lapangan-grid { grid-template-columns: 1fr; }
@@ -217,7 +125,8 @@
                         </div>
                     </div>
                     
-                    <a href="{{ route('booking.index') }}" class="btn-booking">
+                    <!-- Tombol booking tiap lapangan -->
+                    <a href="{{ route('booking.create', ['lapangan_id' => $lp->id]) }}" class="btn-booking">
                         Booking Sekarang
                     </a>
                 </div>

@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* Tema Warna Rizky Futsal */
         :root { 
             --black: #000000; 
             --red: #e10600; 
@@ -30,71 +29,50 @@
             background: rgba(255,255,255,0.05); 
             border: 1px solid var(--gold); 
             border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(212,175,55,0.1);
         }
         
         h2 { 
             text-align: center; 
             color: var(--gold); 
             margin-bottom: 30px; 
-            font-size: 28px;
         }
         
         .form-group { 
-            margin-bottom: 24px; 
+            margin-bottom: 20px; 
         }
         
         label { 
             display: block; 
-            margin-bottom: 8px; 
-            color: #ddd; 
-            font-size: 14px;
+            margin-bottom: 5px; 
         }
         
         input, select { 
             width: 100%; 
-            padding: 14px; 
+            padding: 12px; 
             background: #111; 
             border: 1px solid #333; 
             color: white; 
-            border-radius: 6px; 
-            box-sizing: border-box; 
-            font-size: 15px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--red);
+            border-radius: 5px; 
         }
         
         input:read-only { 
             background: #222; 
-            color: #888; 
-            cursor: not-allowed;
         }
         
         .btn { 
-            display: block; 
             width: 100%; 
-            padding: 16px; 
+            padding: 14px; 
             background: transparent; 
             border: 2px solid var(--red); 
             color: white; 
-            font-weight: 600; 
-            font-size: 16px;
-            text-align: center; 
+            font-weight: bold; 
             cursor: pointer; 
-            transition: 0.3s; 
-            margin-top: 40px; 
-            text-decoration: none;
-            border-radius: 6px;
+            margin-top: 20px; 
         }
         
         .btn:hover { 
             background: linear-gradient(135deg, var(--red), var(--gold));
-            color: var(--black);
-            border-color: transparent;
+            color: black;
         }
     </style>
 </head>
@@ -103,9 +81,9 @@
         <h2>Form Booking Lapangan</h2>
         
         <form action="{{ route('booking.store') }}" method="POST">
-            
             @csrf
             
+            <!-- AUTO DARI USER LOGIN -->
             <div class="form-group">
                 <label>Nama Pemesan</label>
                 <input type="text" value="{{ Auth::user()->name }}" readonly>
@@ -116,22 +94,25 @@
                 <input type="text" value="{{ Auth::user()->email }}" readonly>
             </div>
             
+            <!-- INPUT WAJIB -->
             <div class="form-group">
-                <label>No. WhatsApp / Telepon</label>
-                <input type="text" name="phone" value="{{ Auth::user()->phone }}" placeholder="Contoh: 08123456789" required>
+                <label>No. HP</label>
+                <input type="text" name="no_hp" required>
             </div>
             
             <div class="form-group">
-                <label>Tanggal Main</label>
+                <label>Tanggal</label>
                 <input type="date" name="tanggal" required min="{{ date('Y-m-d') }}">
             </div>
             
             <div class="form-group">
                 <label>Jam Mulai</label>
                 <select name="jam_mulai" required>
-                    <option value="">-- Pilih Jam Bermain --</option>
+                    <option value="">-- Pilih Jam --</option>
                     @for($i = 7; $i <= 22; $i++)
-                        <option value="{{ sprintf('%02d:00', $i) }}">{{ sprintf('%02d:00', $i) }} WIB</option>
+                        <option value="{{ sprintf('%02d:00', $i) }}">
+                            {{ sprintf('%02d:00', $i) }} WIB
+                        </option>
                     @endfor
                 </select>
             </div>
@@ -141,7 +122,11 @@
                 <input type="number" name="durasi" min="1" max="5" value="1" required>
             </div>
             
-            <button type="submit" class="btn">Lanjut ke Pembayaran</button>
+            <!-- HIDDEN (WAJIB) -->
+            <input type="hidden" name="lapangan_id" value="{{ $lapangan->id }}">
+            <input type="hidden" name="total_harga" value="130000">
+            
+            <button type="submit" class="btn">Booking Sekarang</button>
         </form>
     </div>
 </body>

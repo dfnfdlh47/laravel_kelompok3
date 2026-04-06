@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Booking;
 
 class Lapangan extends Model
 {
@@ -18,4 +19,9 @@ class Lapangan extends Model
         'harga_per_jam',
         'deskripsi',
     ];
+
+    public function bookings()
+{
+    return $this->hasMany(Booking::class);
+}
 }
