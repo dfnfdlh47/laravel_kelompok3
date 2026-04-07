@@ -54,18 +54,14 @@ Route::middleware(['auth'])->group(function () {
     // -------------------------
 
     // --- RUTE BOOKING USER (Sistem Pemesanan, Pembayaran, dan Invoice) ---
-<<<<<<< HEAD
      
     Route::get('/booking', [UserBookingController::class, 'index'])->name('booking');
 Route::get('/booking/create/{lapangan_id}', [UserBookingController::class, 'create'])->name('booking.create');
-=======
-    Route::get('/booking', [UserBookingController::class, 'index'])->name('booking.index');
->>>>>>> 91a9446c6b0aaf5f1ff75a0638429214f61d7c74
     Route::post('/booking', [UserBookingController::class, 'store'])->name('booking.store');
     Route::get('/payment/{id}', [UserBookingController::class, 'payment'])->name('payment');
     Route::post('/payment/{id}', [UserBookingController::class, 'pay'])->name('payment.pay');
     Route::get('/invoice/{id}', [UserBookingController::class, 'invoice'])->name('invoice');
-    // ---------------------------------------------------------------------
+    // ------------------------------------------------------------- --------
 
     // Rute Profil Bawaan Breeze/UI
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
