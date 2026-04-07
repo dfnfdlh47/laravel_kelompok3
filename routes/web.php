@@ -1,15 +1,13 @@
 <?php
 
-// Import Controller User
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\LapanganController; 
-use App\Http\Controllers\BookingController as UserBookingController; // Menggunakan alias untuk Booking User
-
-// Import Controller Admin
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Admin\BookingController as AdminBookingController; // Menggunakan alias untuk Booking Admin
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LapanganController;
+use App\Http\Controllers\AdminController;
+
+// Gunakan Alias agar tidak tertukar antara Controller User dan Admin
+use App\Http\Controllers\BookingController as UserBookingController;
+use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +21,7 @@ Route::get('/', function () {
 
 /*
 |--------------------------------------------------------------------------
-| AUTH
+| AUTH (Breeze/Default)
 |--------------------------------------------------------------------------
 */
 require __DIR__.'/auth.php';
@@ -38,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Halaman Utama User
     Route::get('/home', function () {
-        return view('index'); // Pastikan ini mengarah ke file view dashboard user kamu
+        return view('index'); 
     })->name('home');
 
     // --- Rute Navbar Utama ---
@@ -51,22 +49,33 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/location', function () {
         return view('location'); 
     })->name('location');
-    // -------------------------
 
-    // --- RUTE BOOKING USER (Sistem Pemesanan, Pembayaran, dan Invoice) ---
-    Route::get('/booking', [UserBookingController::class, 'index'])->name('booking.index');
+    // --- RUTE BOOKING USER ---
+    Route::get('/booking', [UserBookingController::class, 'index'])->name('booking');
+    Route::get('/booking/create/{lapangan_id}', [UserBookingController::class, 'create'])->name('booking.create');
     Route::post('/booking', [UserBookingController::class, 'store'])->name('booking.store');
-    Route::get('/payment/{id}', [UserBookingController::class, 'payment'])->name('payment');
-    Route::post('/payment/{id}', [UserBookingController::class, 'pay'])->name('payment.pay');
-    Route::get('/invoice/{id}', [UserBookingController::class, 'invoice'])->name('invoice');
-    // ---------------------------------------------------------------------
 
-    // Rute Profil Bawaan Breeze/UI
+    // Step 1: Halaman Pilih Metode Pembayaran
+    Route::get('/payment/{id}', [UserBookingController::class, 'payment'])->name('payment');
+    // Step 2: Update Metode
+    Route::post('/payment/update/{id}', [UserBookingController::class, 'updateMetode'])->name('payment.update');
+
+    // Step 3: Halaman Instruksi Bayar
+    Route::get('/konfirmasi/{id}', [UserBookingController::class, 'konfirmasi'])->name('konfirmasi');
+    // Step 4: Upload Bukti & Bayar
+    Route::post('/pay/{id}', [UserBookingController::class, 'pay'])->name('pay');
+
+    // Step 5: Halaman Menunggu / Sukses (Gunakan UserBookingController agar konsisten)
+    Route::get('/booking/success/{id}', [UserBookingController::class, 'success'])->name('booking.success');
+
+    // Step 6: Download Invoice
+    Route::get('/invoice/{id}', [UserBookingController::class, 'invoice'])->name('invoice');
+
+    // --- PROFIL ---
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
 
 
 /*
@@ -74,17 +83,14 @@ Route::middleware(['auth'])->group(function () {
 | ADMIN
 |--------------------------------------------------------------------------
 */
-// Menggabungkan middleware 'role:admin' dan prefix 'admin' agar lebih aman dan rapi
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     
-    // Rute: /admin
-    Route::get('/', [AdminController::class, 'index'])->name('dashboard'); 
-    
     // Rute: /admin/dashboard
-    Route::get('/dashboard', fn () => view('admin.dashboard'))->name('dashboard.view'); 
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard'); 
     
-    // Rute: /admin/booking (Hanya admin yang bisa akses CRUD booking)
-    // Menggunakan AdminBookingController dari folder Admin
+    // Rute: /admin/booking (CRUD)
     Route::resource('booking', AdminBookingController::class);
     
-});     
+    // Rute: /admin/lapangan (CRUD)
+    Route::resource('lapangan', LapanganController::class);
+});

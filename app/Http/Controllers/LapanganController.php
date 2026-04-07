@@ -7,9 +7,15 @@ use App\Models\Lapangan;
 
 class LapanganController extends Controller
 {
-public function index()
-{
-    $lapangans = Lapangan::all(); // Mengambil semua data
-    return view('lapangan', compact('lapangans')); // Dikirim sebagai $lapangans
-}
+    /**
+     * Tampilkan daftar semua lapangan.
+     */
+    public function index()
+    {
+        // Ambil semua data lapangan
+        $lapangans = Lapangan::all();
+
+        // Kirim data ke view 'lapangan.blade.php'
+        return view('lapangan', compact('lapangans'));
+    }
 }

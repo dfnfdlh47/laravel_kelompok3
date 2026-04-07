@@ -12,16 +12,34 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bookings', function (Blueprint $table) {
-    $table->id();
-    $table->foreignId('user_id')->constrained()->onDelete('cascade');
-    $table->foreignId('lapangan_id')->constrained()->onDelete('cascade');
-    $table->date('tanggal');
-    $table->time('jam_mulai');
-    $table->integer('durasi');
-    $table->integer('total_harga');
-    $table->string('status')->default('pending');
-    $table->timestamps();
-});
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('lapangan_id')->constrained()->onDelete('cascade');
+            
+            // Data Pemesan Tambahan (untuk keperluan kontak)
+            $table->string('no_hp'); 
+            
+            // Detail Waktu
+            $table->date('tanggal');
+            $table->time('jam_mulai');
+            $table->integer('durasi'); // dalam Jam
+            
+            // Pembayaran
+            $table->integer('total_harga');
+            $table->string('metode_pembayaran')->nullable(); // transfer, qris, atau cod
+            $table->string('bukti_pembayaran')->nullable(); // Untuk menyimpan path foto struk
+            
+            /**
+             * Status Alur:
+             * pending = Baru isi form (belum pilih metode bayar)
+             * waiting = Sudah pilih metode (menunggu upload bukti/konfirmasi)
+             * success = Lunas (Invoice terbit)
+             * cancelled = Dibatalkan
+             */
+            $table->string('status')->default('pending');
+            
+            $table->timestamps();
+        });
     }
 
     /**
