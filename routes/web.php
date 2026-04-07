@@ -1,25 +1,23 @@
 <?php
 
-// Import Controller User
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LapanganController; 
-use App\Http\Controllers\BookingController as UserBookingController; // Menggunakan alias untuk Booking User
+use App\Http\Controllers\BookingController as UserBookingController;
 
-// Import Controller Admin
+// Admin
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Admin\BookingController as AdminBookingController; // Menggunakan alias untuk Booking Admin
+use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| GUEST (BELUM LOGIN)
+| GUEST
 |--------------------------------------------------------------------------
 */
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +26,6 @@ Route::get('/', function () {
 */
 require __DIR__.'/auth.php';
 
-
 /*
 |--------------------------------------------------------------------------
 | USER LOGIN
@@ -36,78 +33,47 @@ require __DIR__.'/auth.php';
 */
 Route::middleware(['auth'])->group(function () {
 
-    // Halaman Utama User
     Route::get('/home', function () {
-        return view('index'); // Pastikan ini mengarah ke file view dashboard user kamu
+        return view('index');
     })->name('home');
 
-    // --- Rute Navbar Utama ---
-    Route::get('/lapangan', [LapanganController::class, 'index'])->name('lapangan.index');
-    
-    Route::get('/jam-buka', function () {
-        return view('jambuka'); 
-    })->name('jambuka');
+    // Navbar
 
-    Route::get('/location', function () {
-        return view('location'); 
-    })->name('location');
-    // -------------------------
+    Route::get('/jam-buka', fn () => view('jambuka'))->name('jambuka');
+    Route::get('/location', fn () => view('location'))->name('location');
 
-    // --- RUTE BOOKING USER (Sistem Pemesanan, Pembayaran, dan Invoice) ---
-<<<<<<< HEAD
-     
-    Route::get('/booking', [UserBookingController::class, 'index'])->name('booking');
-Route::get('/booking/create/{lapangan_id}', [UserBookingController::class, 'create'])->name('booking.create');
-=======
+    // BOOKING USER
     Route::get('/booking', [UserBookingController::class, 'index'])->name('booking.index');
->>>>>>> 91a9446c6b0aaf5f1ff75a0638429214f61d7c74
+    Route::get('/booking/create/{lapangan_id}', [UserBookingController::class, 'create'])->name('booking.create');
     Route::post('/booking', [UserBookingController::class, 'store'])->name('booking.store');
+
     Route::get('/payment/{id}', [UserBookingController::class, 'payment'])->name('payment');
     Route::post('/payment/{id}', [UserBookingController::class, 'pay'])->name('payment.pay');
-    Route::get('/invoice/{id}', [UserBookingController::class, 'invoice'])->name('invoice');
-    // ---------------------------------------------------------------------
 
-    // Rute Profil Bawaan Breeze/UI
+    Route::get('/invoice/{id}', [UserBookingController::class, 'invoice'])->name('invoice');
+
+    // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::get('/booking', function () {
-    return view('booking');
-})->name('booking');
-
 
 /*
 |--------------------------------------------------------------------------
 | ADMIN
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])
-        ->name('admin.dashboard');
-});
-
-Route::prefix('admin')->name('admin.')->group(function () {
-Route::get('/dashboard', fn () => view('admin.dashboard'));
-Route::resource('booking', AdminBookingController::class);
-});
-
-
-Route::resource('lapangan', LapanganController::class);
-
-
-// Menggabungkan middleware 'role:admin' dan prefix 'admin' agar lebih aman dan rapi
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-    
-    // Rute: /admin
-    Route::get('/', [AdminController::class, 'index'])->name('dashboard'); 
-    
-    // Rute: /admin/dashboard
-    Route::get('/dashboard', fn () => view('admin.dashboard'))->name('dashboard.view'); 
-    
-    // Rute: /admin/booking (Hanya admin yang bisa akses CRUD booking)
-    // Menggunakan AdminBookingController dari folder Admin
+
+    Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', fn () => view('admin.dashboard'))->name('dashboard.view');
+
     Route::resource('booking', AdminBookingController::class);
-    
-});     
+});
+
+/*
+|--------------------------------------------------------------------------
+| RESOURCE UMUM
+|--------------------------------------------------------------------------
+*/
+Route::resource('lapangan', LapanganController::class);

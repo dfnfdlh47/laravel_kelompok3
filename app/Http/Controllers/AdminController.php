@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Booking;
 
 class AdminController extends Controller
 {
@@ -10,10 +11,11 @@ class AdminController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('admin.dashboard');
-    
-    }
+{
+    $bookings = Booking::with('lapangan')->latest()->get();
+
+    return view('admin.dashboard', compact('bookings'));
+}
 
     /**
      * Show the form for creating a new resource.

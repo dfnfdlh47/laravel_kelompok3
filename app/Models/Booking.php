@@ -30,8 +30,8 @@ class Booking extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function lapangan()
+ public function lapangan()
 {
-    return $this->belongsTo(Lapangan::class);
+    return $this->belongsTo(Lapangan::class, 'lapangan_id');
 }
 }
