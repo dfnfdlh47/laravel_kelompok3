@@ -42,13 +42,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jam-buka', fn () => view('jambuka'))->name('jambuka');
     Route::get('/location', fn () => view('location'))->name('location');
 
-    // BOOKING USER
-    Route::get('/booking', [UserBookingController::class, 'index'])->name('booking.index');
-    Route::get('/booking/create/{lapangan_id}', [UserBookingController::class, 'create'])->name('booking.create');
+    // --- RUTE BOOKING USER (Sistem Pemesanan, Pembayaran, dan Invoice) ---
+     
+    Route::get('/booking', [UserBookingController::class, 'index'])->name('booking');
+Route::get('/booking/create/{lapangan_id}', [UserBookingController::class, 'create'])->name('booking.create');
     Route::post('/booking', [UserBookingController::class, 'store'])->name('booking.store');
 
     Route::get('/payment/{id}', [UserBookingController::class, 'payment'])->name('payment');
     Route::post('/payment/{id}', [UserBookingController::class, 'pay'])->name('payment.pay');
+    Route::get('/invoice/{id}', [UserBookingController::class, 'invoice'])->name('invoice');
+    // ------------------------------------------------------------- --------
 
     Route::get('/invoice/{id}', [UserBookingController::class, 'invoice'])->name('invoice');
 

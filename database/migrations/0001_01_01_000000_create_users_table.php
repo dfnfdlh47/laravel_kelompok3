@@ -14,7 +14,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            // Tambahan: kolom username, unik, dan boleh kosong (nullable) sementara jika user lama belum punya
+            $table->string('username')->unique()->nullable(); 
             $table->string('email')->unique();
+            // Tambahan: kolom no_hp, boleh kosong
+            $table->string('no_hp')->nullable(); 
+            // Tambahan: kolom role, default-nya adalah 'user' biasa
+            $table->string('role')->default('user'); 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
