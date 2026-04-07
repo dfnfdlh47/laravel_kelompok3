@@ -11,13 +11,12 @@ use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 
 /*
 |--------------------------------------------------------------------------
-| GUEST (BELUM LOGIN)
+| GUEST
 |--------------------------------------------------------------------------
 */
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +25,6 @@ Route::get('/', function () {
 */
 require __DIR__.'/auth.php';
 
-
 /*
 |--------------------------------------------------------------------------
 | USER LOGIN
@@ -34,26 +32,25 @@ require __DIR__.'/auth.php';
 */
 Route::middleware(['auth'])->group(function () {
 
-    // Halaman Utama User
     Route::get('/home', function () {
         return view('index'); 
     })->name('home');
 
-    // --- Rute Navbar Utama ---
-    Route::get('/lapangan', [LapanganController::class, 'index'])->name('lapangan.index');
-    
-    Route::get('/jam-buka', function () {
-        return view('jambuka'); 
-    })->name('jambuka');
+    // Navbar
 
     Route::get('/location', function () {
         return view('location'); 
     })->name('location');
 
+    Route::get('/jambuka', function () {
+    return view('jambuka');
+})->name('jambuka');
+
     // --- RUTE BOOKING USER ---
     Route::get('/booking', [UserBookingController::class, 'index'])->name('booking');
     Route::get('/booking/create/{lapangan_id}', [UserBookingController::class, 'create'])->name('booking.create');
     Route::post('/booking', [UserBookingController::class, 'store'])->name('booking.store');
+    Route::get('/lapangan', [LapanganController::class, 'index'])->name('lapangan.index');
 
     // Step 1: Halaman Pilih Metode Pembayaran
     Route::get('/payment/{id}', [UserBookingController::class, 'payment'])->name('payment');
@@ -76,7 +73,6 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
 
 /*
 |--------------------------------------------------------------------------

@@ -15,6 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // 1. Memanggil AdminSeeder untuk membuat akun admin utama
+        $this->call([
+            AdminSeeder::class,
+        ]);
+
+        // 2. Bawaan Laravel: Membuat dummy user tambahan (opsional)
         // User::factory(10)->create();
 
         User::factory()->create([
