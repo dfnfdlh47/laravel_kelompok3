@@ -135,7 +135,7 @@
             </div>
             
             <div class="form-group">
-                <label>Durasi Main (Jam)</label>
+                <label>Durasi (Jam)</label>
                 <input type="number" name="durasi" min="1" max="5" value="1" required>
             </div>
             

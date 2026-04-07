@@ -231,7 +231,7 @@
         </div>
 
         <div class="price-row">
-            <span class="time">17.00</span>
+            <span class="time">17.00 - 18.00</span>
             <span class="price">Rp 140.000</span>
         </div>
 
@@ -245,9 +245,10 @@
             <div class="op-box">
                 <h3>Aturan Booking</h3>
                 <ul class="op-list">
-                    <li><p><span class="check-mark">✔</span> Minimal booking sebelum jam 21.00</p></li>
+                    <li><p><span class="check-mark">✔</span> Maximal booking sebelum jam 21.00</p></li>
                     <li><p><span class="check-mark">✔</span> Harap datang tepat waktu</p></li>
                     <li><p><span class="check-mark">✔</span> Pembayaran sesuai waktu dipilih</p></li>
+                    <li><p><span class="check-mark">✔</span> Free Aqua Gelass 1 Kardus</p></li>
                 </ul>
             </div>
         </div>
